@@ -1,37 +1,12 @@
-## Welcome to GitHub Pages
-
-You can use the [editor on GitHub](https://github.com/Akemiiii/Akemiiii.github.io/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Akemiiii/Akemiiii.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+1. [Markdown footnotes for vscode](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-footnotes)  
+2. [西瓜皮装猕猴桃的博客（量子力学or线性代数和量子计算入门基础学习笔记）](https://blog.csdn.net/qq_45777142)  
+3. [量子计算-课程与参考书（USTC）](https://s4plus.ustc.edu.cn/2018/1225/c17737a372334/page.htm)  
+4. [量子软件前沿（USTC）](https://github.com/S4Plus/QuantumCourse)  
+5. [Quantum Computation and Quantum Information (10th edition)](http://mmrc.amss.cas.cn/tlb/201702/W020170224608149940643.pdf)  
+6. [量子计算机与编程入门（再次感谢USTC）](https://s4plus.ustc.edu.cn/_upload/article/files/2a/bf/76399c294688922e5e57287469f5/60806e14-43c1-4122-a31a-4e24e7585cfa.pdf)  
+7. [写给IT人的量子计算教程](https://zhuanlan.zhihu.com/p/332547283)  
+8. [Quirk(A drag-and-drop quantum circuit simulator)](https://algassert.com/)  
+9. [An other quantum circuit simulator](https://quantum-circuit.com/)
+10. [CSci 8980: Machine Learning in Computer Systems(UMN)](http://www-users.cselabs.umn.edu/classes/Spring-2019/csci8980/)
+11. [Al-Sys(UCB)](https://ucbrise.github.io/cs294-ai-sys-sp19/#today)
+12. [System相关有趣的知乎专栏 from PRO Pentium](https://www.zhihu.com/column/c_1238468913098731520)  
