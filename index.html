@@ -21,9 +21,9 @@
 <script class="next-config" data-name="main" type="application/json">{"hostname":"akemiiii.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
     <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="Blog">
 <meta property="og:url" content="http://akemiiii.github.io/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Blog">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Akemii">
 <meta name="twitter:card" content="summary">
@@ -36,7 +36,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"en","comments":"","permalink":"","path":"index.html","title":""}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Hexo</title>
+<title>Blog</title>
   
 
 
@@ -68,7 +68,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">Hexo</h1>
+      <h1 class="site-title">Blog</h1>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -168,17 +168,17 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Blog">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Hexo">
+      <meta itemprop="name" content="undefined | Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/08/GSoC-project/" class="post-title-link" itemprop="url">GSoC project</a>
+          <a href="/2022/09/08/GSoC-project/" class="post-title-link" itemprop="url">GSoC project report</a>
         </h2>
 
         <div class="post-meta-container">
@@ -190,7 +190,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-09-08 10:34:13 / Modified: 16:21:47" itemprop="dateCreated datePublished" datetime="2022-09-08T10:34:13+08:00">2022-09-08</time>
+      <time title="Created: 2022-09-08 10:34:13 / Modified: 19:44:32" itemprop="dateCreated datePublished" datetime="2022-09-08T10:34:13+08:00">2022-09-08</time>
     </span>
 
   
@@ -203,23 +203,26 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="motivation">Motivation</h2>
-<p>This project aims to help developers find useful information from error message. See</p>
+          <h2 id="introduction-motivation">Introduction &amp; Motivation</h2>
+<p>This project is a GSoC project. Here is the <a target="_blank" rel="noopener" href="https://summerofcode.withgoogle.com/programs/2022/projects/8fzvvscF">link</a>. This project aims to help developers find useful information from error message, whose details can be found <a target="_blank" rel="noopener" href="https://github.com/openSUSE/mentoring/issues/121">here</a>. To achieve this goal, I firstly calculated the edit distances between each error messages. Then, I sorted these distances and posted them on the comments of openQA jobs webpage. Finally, I draw a relation graph to visualize the relations between certain errors.</p>
+<h2 id="usage">Usage</h2>
 <h2 id="error-message-structure">Error message structure</h2>
 <p>The first thing is to understand the error message. Here is an example:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Test died: Could not match on correct formula within multiple retries at opensuse/tests/x11/oomath.pm line 33.</span><br><span class="line">    oomath::run(oomath=HASH(0x55cf6315c508)) called at /usr/lib/os-autoinst/basetest.pm line 328</span><br><span class="line">	eval &#123;...&#125; called at /usr/lib/os-autoinst/basetest.pm line 322</span><br><span class="line">	basetest::runtest(oomath=HASH(0x55cf6315c508)) called at /usr/lib/os-autoinst/autotest.pm line 367</span><br><span class="line">	eval &#123;...&#125; called at /usr/lib/os-autoinst/autotest.pm line 367</span><br><span class="line">	autotest::runalltests() called at /usr/lib/os-autoinst/autotest.pm line 243</span><br><span class="line">	eval &#123;...&#125; called at /usr/lib/os-autoinst/autotest.pm line 243</span><br><span class="line">	autotest::run_all() called at /usr/lib/os-autoinst/autotest.pm line 294</span><br><span class="line">	autotest::__ANON__(Mojo::IOLoop::ReadWriteProcess=HASH(0x55cf64c30638)) called at /usr/lib/perl5/vendor_perl/5.26.1/Mojo/IOLoop/ReadWriteProcess.pm line 326</span><br><span class="line">	eval &#123;...&#125; called at /usr/lib/perl5/vendor_perl/5.26.1/Mojo/IOLoop/ReadWriteProcess.pm line 326</span><br><span class="line">	Mojo::IOLoop::ReadWriteProcess::_fork(Mojo::IOLoop::ReadWriteProcess=HASH(0x55cf64c30638), CODE(0x55cf64f22b40)) called at /usr/lib/perl5/vendor_perl/5.26.1/Mojo/IOLoop/ReadWriteProcess.pm line 488</span><br><span class="line">	Mojo::IOLoop::ReadWriteProcess::start(Mojo::IOLoop::ReadWriteProcess=HASH(0x55cf64c30638)) called at /usr/lib/os-autoinst/autotest.pm line 296</span><br><span class="line">	autotest::start_process() called at /usr/bin/isotovideo line 273</span><br></pre></td></tr></table></figure>
 <p>It is a bit long, but common. This error message can be found in the <code>autoinst-log.txt</code> for each failed job. The URL of the file is <code>https://openqa.opensuse.org/tests/job_id/file/autoinst-log.txt</code> and the path of the file on server is <code>/var/lib/openqa/testresults/job_id/autoinst-log.txt</code>. Let's look at the error message. <code>Test died</code> indicates the failure of a test case. The appending, <code>Could not match on correct formula within multiple retries at opensuse/tests/x11/oomath.pm line 33.</code>, shows the direct error reason. The following lines are detailed reasons.</p>
 <p>In my opinion, the first line shows the direct cause. Many errors with different root causes have the same direct cause. Showing this situation to developer and openQA users will be helpful and the root causes are less important. Thus, I focus on the first line.</p>
 <p>To measure the similarity of error messages, I chose Levenshtein distance.</p>
-<h3 id="levenshtein-distance">Levenshtein distance</h3>
-<p>Levenshtein distance is a metric for measuring the difference between two strings. It is name by the Soviet mathematician Vladimir Levenshtein in 1965. Levenshtein distance measures the distance from a string to another string. The algorithm of calculating Levenshtein distance is: <span class="math display">\[lev(a,b)=\begin{cases}
+<h2 id="levenshtein-distance">Levenshtein distance</h2>
+<p>Levenshtein distance is a metric for measuring the difference between two strings. It is name by the Soviet mathematician Vladimir Levenshtein in 1965. Levenshtein distance measures the distance from a string to another string. Three edit operations are considered as 1 unit of distance: - Convert 1 character into another - Insert 1 character - Delete 1 character</p>
+<p>The algorithm of calculating Levenshtein distance is: <span class="math display">\[lev(a,b)=\begin{cases}
 |a|, &amp;if\ |b|=0\\
 |b|, &amp;if\ |a|=0\\
 lev(tail(a),tail(b)), &amp;if\ a[0]=b[0]\\
 1+min \lbrace lev(tail(a),b),lev(a,tail(b)),lev(tail(a),tail(b))\rbrace, &amp;otherwise
 \end{cases}\]</span></p>
 <p>where $ lev(a,b) $ indicates the Levenshtein distance of string <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> ; $ tail(a) $ indicates the substring which removes the first character of <span class="math inline">\(a\)</span>.</p>
-<p>As the above formula shows, recursive implementation can be used to calculate Levenshtein distance. However, it may cost unnecessary time and space to calucate repeated substructures. Dynamic programming is a better choice. Of course, there are existing packages to use.</p>
+<p>As the above formula shows, recursive implementation can be used to calculate Levenshtein distance. However, it may cost unnecessary time and space to calucate repeated substructures. Dynamic programming is a better choice. Of course, there are existing packages to use, either Perl or Python.</p>
+<h2 id="save">Save</h2>
 
       
     </div>
