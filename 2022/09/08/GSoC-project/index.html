@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"akemiiii.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Introduction &amp; Motivation This project is a GSoC project. Here is the link. This project aims to help developers find useful information from error message, whose details can be found here. To ach">
+    <meta name="description" content="Introduction This project is a GSoC project. Here is the link. This project aims to help developers find useful information from error message, whose details can be found here. To achieve this goal, I">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GSoC project report">
 <meta property="og:url" content="http://akemiiii.github.io/2022/09/08/GSoC-project/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="Introduction &amp; Motivation This project is a GSoC project. Here is the link. This project aims to help developers find useful information from error message, whose details can be found here. To ach">
+<meta property="og:description" content="Introduction This project is a GSoC project. Here is the link. This project aims to help developers find useful information from error message, whose details can be found here. To achieve this goal, I">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-09-08T02:34:13.000Z">
-<meta property="article:modified_time" content="2022-09-08T14:43:54.280Z">
+<meta property="article:modified_time" content="2022-09-08T14:45:12.050Z">
 <meta property="article:author" content="Akemii">
 <meta name="twitter:card" content="summary">
 
@@ -113,7 +113,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-motivation"><span class="nav-number">1.</span> <span class="nav-text">Introduction &amp; Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#usage"><span class="nav-number">2.</span> <span class="nav-text">Usage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#error-message-structure"><span class="nav-number">3.</span> <span class="nav-text">Error message structure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#levenshtein-distance"><span class="nav-number">4.</span> <span class="nav-text">Levenshtein distance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#save-intermediate-results"><span class="nav-number">5.</span> <span class="nav-text">Save intermediate results</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#post-results"><span class="nav-number">6.</span> <span class="nav-text">Post results</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#draw-relation-graph"><span class="nav-number">7.</span> <span class="nav-text">Draw relation graph</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#usage"><span class="nav-number">2.</span> <span class="nav-text">Usage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#error-message-structure"><span class="nav-number">3.</span> <span class="nav-text">Error message structure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#levenshtein-distance"><span class="nav-number">4.</span> <span class="nav-text">Levenshtein distance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#save-intermediate-results"><span class="nav-number">5.</span> <span class="nav-text">Save intermediate results</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#post-results"><span class="nav-number">6.</span> <span class="nav-text">Post results</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#draw-relation-graph"><span class="nav-number">7.</span> <span class="nav-text">Draw relation graph</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -196,7 +196,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-09-08 10:34:13 / Modified: 22:43:54" itemprop="dateCreated datePublished" datetime="2022-09-08T10:34:13+08:00">2022-09-08</time>
+      <time title="Created: 2022-09-08 10:34:13 / Modified: 22:45:12" itemprop="dateCreated datePublished" datetime="2022-09-08T10:34:13+08:00">2022-09-08</time>
     </span>
 
   
@@ -209,7 +209,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="introduction-motivation">Introduction &amp; Motivation</h2>
+        <h2 id="introduction">Introduction</h2>
 <p>This project is a GSoC project. Here is the <a target="_blank" rel="noopener" href="https://summerofcode.withgoogle.com/programs/2022/projects/8fzvvscF">link</a>. This project aims to help developers find useful information from error message, whose details can be found <a target="_blank" rel="noopener" href="https://github.com/openSUSE/mentoring/issues/121">here</a>. To achieve this goal, I firstly calculated the edit distances between each error messages. Then, I sorted these distances and posted them on the comments of openQA jobs webpage. Finally, I draw a relation graph to visualize the relations between certain errors. My codes can be found in this <a target="_blank" rel="noopener" href="https://github.com/os-autoinst/scripts/pull/174">pull request</a>.</p>
 <h2 id="usage">Usage</h2>
 <table>
