@@ -190,7 +190,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-09-08 10:34:13 / Modified: 20:31:31" itemprop="dateCreated datePublished" datetime="2022-09-08T10:34:13+08:00">2022-09-08</time>
+      <time title="Created: 2022-09-08 10:34:13 / Modified: 20:49:55" itemprop="dateCreated datePublished" datetime="2022-09-08T10:34:13+08:00">2022-09-08</time>
     </span>
 
   
@@ -214,15 +214,15 @@
 </colgroup>
 <thead>
 <tr class="header">
-<th>parameter</th>
-<th>default</th>
-<th>help</th>
+<th>Parameters</th>
+<th>Default values</th>
+<th>Help information</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>-o, --output</td>
-<td>False</td>
+<td><code>False</code></td>
 <td>Whether outputs the results into a txt file</td>
 </tr>
 <tr class="even">
@@ -232,7 +232,7 @@
 </tr>
 <tr class="odd">
 <td>-n, --number</td>
-<td>10</td>
+<td><code>10</code></td>
 <td>Number of similar errors. E.g. <code>-n 10</code></td>
 </tr>
 <tr class="even">
@@ -242,17 +242,17 @@
 </tr>
 <tr class="odd">
 <td>-p, --post</td>
-<td>False</td>
+<td><code>False</code></td>
 <td>Whether post similarity to openQA website</td>
 </tr>
 <tr class="even">
 <td>-c, --chart</td>
-<td>0</td>
+<td><code>0</code></td>
 <td>Number of points in chart (If the number is 0, the chart won't be drawn). This parameter requires two more parameters: <code>--geometry</code> and <code>--save</code>.</td>
 </tr>
 <tr class="odd">
 <td>--geometry</td>
-<td>1920x1080</td>
+<td><code>1920x1080</code></td>
 <td>Chart resolution. E.g. <code>--geometry 1920x1080</code></td>
 </tr>
 <tr class="even">
@@ -279,7 +279,7 @@ lev(tail(a),tail(b)), &amp;if\ a[0]=b[0]\\
 <p>where $ lev(a,b) $ indicates the Levenshtein distance of string <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> ; $ tail(a) $ indicates the substring which removes the first character of <span class="math inline">\(a\)</span>.</p>
 <p>As the above formula shows, recursive implementation can be used to calculate Levenshtein distance. However, it may cost unnecessary time and space to calucate repeated substructures. Dynamic programming is a better choice. Of course, there are existing packages to use, either Perl or Python.</p>
 <h2 id="save-intermediate-results">Save intermediate results</h2>
-<p>Though Levenshtein distance calculation will not cost much time,</p>
+<p>Though Levenshtein distance calculation will not cost much time, it still needs ~1 minute for 10,000 jobs. I think the time is too long if this script is frequently used. To save calculation time, I saved intermediate results of Levenshtein distance calculation.</p>
 
       
     </div>
