@@ -190,7 +190,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-09-08 10:34:13 / Modified: 22:26:20" itemprop="dateCreated datePublished" datetime="2022-09-08T10:34:13+08:00">2022-09-08</time>
+      <time title="Created: 2022-09-08 10:34:13 / Modified: 22:36:26" itemprop="dateCreated datePublished" datetime="2022-09-08T10:34:13+08:00">2022-09-08</time>
     </span>
 
   
@@ -284,6 +284,8 @@ lev(tail(a),tail(b)), &amp;if\ a[0]=b[0]\\
 <p>After finding the similar errors, the next is presenting the results for developers. After communications with mentors, I gave up developing a new tab to show the results. Instead, I used the comment tab to post the similarity results as a comment. To achieve this, I used <a target="_blank" rel="noopener" href="https://pypi.org/project/openqa-client/">openqa-client</a> and the post method to upload the comments.</p>
 <h2 id="draw-relation-graph">Draw relation graph</h2>
 <p>During the GSoC period, my mentors mentioned whether there exists a method to show the relations of errors directly. I came up with a idea about drawing a relation chart to visualize the relations between certain errors. I chose the python version of <code>echarts</code> library - <code>pyecharts</code>. I chose it for two reasons: (1) It draws interactive charts. Users can click, drag, zoom in &amp; out the charts for more information; (2) It have detailed documents with examples, which is helpful for me.</p>
+<p>How to design the chart is a question. In my implementation, every kind of error messages is drawn as one point. The more frquent the error, the bigger its point. If the mouse hovers over the point, it will show the details. I used gravity to design the layout of points. If two error messages are similar, the attractive force between them is big, vice versa. So similar errors will get closer. For error pairs whose similarity is high, there will be a line to connect them. If the mouse hovers over the line, it will also show the details. You can use <code>--geometry</code> argument to change the resolution and the chart will be saved as a .html file.</p>
+<h2 id="what-i-learnt">What I learnt</h2>
 
       
     </div>
