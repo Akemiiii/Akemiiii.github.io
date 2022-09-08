@@ -190,7 +190,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-09-08 10:34:13 / Modified: 20:49:55" itemprop="dateCreated datePublished" datetime="2022-09-08T10:34:13+08:00">2022-09-08</time>
+      <time title="Created: 2022-09-08 10:34:13 / Modified: 22:26:20" itemprop="dateCreated datePublished" datetime="2022-09-08T10:34:13+08:00">2022-09-08</time>
     </span>
 
   
@@ -279,7 +279,11 @@ lev(tail(a),tail(b)), &amp;if\ a[0]=b[0]\\
 <p>where $ lev(a,b) $ indicates the Levenshtein distance of string <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> ; $ tail(a) $ indicates the substring which removes the first character of <span class="math inline">\(a\)</span>.</p>
 <p>As the above formula shows, recursive implementation can be used to calculate Levenshtein distance. However, it may cost unnecessary time and space to calucate repeated substructures. Dynamic programming is a better choice. Of course, there are existing packages to use, either Perl or Python.</p>
 <h2 id="save-intermediate-results">Save intermediate results</h2>
-<p>Though Levenshtein distance calculation will not cost much time, it still needs ~1 minute for 10,000 jobs. I think the time is too long if this script is frequently used. To save calculation time, I saved intermediate results of Levenshtein distance calculation.</p>
+<p>Though this script will not cost much time, it still needs ~2 minute for 10,000 jobs. Most time is used for scanning <code>autoinst-log.txt</code> and finding error messages. I think the time is too long if this script is frequently used. To save the time, I saved intermediate results of finding error messages. In particular, the script saves job ids and corresponding error messages into a .csv file. If new jobs are finished and the script is used, the script will firstly read the .csv file and then scan the new job files. During this period, that nothing outputs on the terminal may make the script looks like hunging. Thus, I used <a target="_blank" rel="noopener" href="https://github.com/tqdm/tqdm">tqdm</a> to present progress bars to indicate the progress.</p>
+<h2 id="post-results">Post results</h2>
+<p>After finding the similar errors, the next is presenting the results for developers. After communications with mentors, I gave up developing a new tab to show the results. Instead, I used the comment tab to post the similarity results as a comment. To achieve this, I used <a target="_blank" rel="noopener" href="https://pypi.org/project/openqa-client/">openqa-client</a> and the post method to upload the comments.</p>
+<h2 id="draw-relation-graph">Draw relation graph</h2>
+<p>During the GSoC period, my mentors mentioned whether there exists a method to show the relations of errors directly. I came up with a idea about drawing a relation chart to visualize the relations between certain errors. I chose the python version of <code>echarts</code> library - <code>pyecharts</code>. I chose it for two reasons: (1) It draws interactive charts. Users can click, drag, zoom in &amp; out the charts for more information; (2) It have detailed documents with examples, which is helpful for me.</p>
 
       
     </div>
