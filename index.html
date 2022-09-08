@@ -190,7 +190,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-09-08 10:34:13 / Modified: 14:36:57" itemprop="dateCreated datePublished" datetime="2022-09-08T10:34:13+08:00">2022-09-08</time>
+      <time title="Created: 2022-09-08 10:34:13 / Modified: 16:21:47" itemprop="dateCreated datePublished" datetime="2022-09-08T10:34:13+08:00">2022-09-08</time>
     </span>
 
   
@@ -211,7 +211,7 @@
 <p>It is a bit long, but common. This error message can be found in the <code>autoinst-log.txt</code> for each failed job. The URL of the file is <code>https://openqa.opensuse.org/tests/job_id/file/autoinst-log.txt</code> and the path of the file on server is <code>/var/lib/openqa/testresults/job_id/autoinst-log.txt</code>. Let's look at the error message. <code>Test died</code> indicates the failure of a test case. The appending, <code>Could not match on correct formula within multiple retries at opensuse/tests/x11/oomath.pm line 33.</code>, shows the direct error reason. The following lines are detailed reasons.</p>
 <p>In my opinion, the first line shows the direct cause. Many errors with different root causes have the same direct cause. Showing this situation to developer and openQA users will be helpful and the root causes are less important. Thus, I focus on the first line.</p>
 <p>To measure the similarity of error messages, I chose Levenshtein distance.</p>
-<h2 id="levenshtein-distance">Levenshtein distance</h2>
+<h3 id="levenshtein-distance">Levenshtein distance</h3>
 <p>Levenshtein distance is a metric for measuring the difference between two strings. It is name by the Soviet mathematician Vladimir Levenshtein in 1965. Levenshtein distance measures the distance from a string to another string. The algorithm of calculating Levenshtein distance is: <span class="math display">\[lev(a,b)=\begin{cases}
 |a|, &amp;if\ |b|=0\\
 |b|, &amp;if\ |a|=0\\

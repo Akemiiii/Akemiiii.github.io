@@ -28,7 +28,7 @@
 <meta property="og:description" content="Motivation This project aims to help developers find useful information from error message. See Error message structure The first thing is to understand the error message. Here is an example: 12345678">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-09-08T02:34:13.000Z">
-<meta property="article:modified_time" content="2022-09-08T06:36:57.360Z">
+<meta property="article:modified_time" content="2022-09-08T08:21:47.200Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -113,7 +113,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#motivation"><span class="nav-number">1.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#error-message-structure"><span class="nav-number">2.</span> <span class="nav-text">Error message structure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#levenshtein-distance"><span class="nav-number">3.</span> <span class="nav-text">Levenshtein distance</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#motivation"><span class="nav-number">1.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#error-message-structure"><span class="nav-number">2.</span> <span class="nav-text">Error message structure</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#levenshtein-distance"><span class="nav-number">2.1.</span> <span class="nav-text">Levenshtein distance</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -196,7 +196,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-09-08 10:34:13 / Modified: 14:36:57" itemprop="dateCreated datePublished" datetime="2022-09-08T10:34:13+08:00">2022-09-08</time>
+      <time title="Created: 2022-09-08 10:34:13 / Modified: 16:21:47" itemprop="dateCreated datePublished" datetime="2022-09-08T10:34:13+08:00">2022-09-08</time>
     </span>
 
   
@@ -217,7 +217,7 @@
 <p>It is a bit long, but common. This error message can be found in the <code>autoinst-log.txt</code> for each failed job. The URL of the file is <code>https://openqa.opensuse.org/tests/job_id/file/autoinst-log.txt</code> and the path of the file on server is <code>/var/lib/openqa/testresults/job_id/autoinst-log.txt</code>. Let's look at the error message. <code>Test died</code> indicates the failure of a test case. The appending, <code>Could not match on correct formula within multiple retries at opensuse/tests/x11/oomath.pm line 33.</code>, shows the direct error reason. The following lines are detailed reasons.</p>
 <p>In my opinion, the first line shows the direct cause. Many errors with different root causes have the same direct cause. Showing this situation to developer and openQA users will be helpful and the root causes are less important. Thus, I focus on the first line.</p>
 <p>To measure the similarity of error messages, I chose Levenshtein distance.</p>
-<h2 id="levenshtein-distance">Levenshtein distance</h2>
+<h3 id="levenshtein-distance">Levenshtein distance</h3>
 <p>Levenshtein distance is a metric for measuring the difference between two strings. It is name by the Soviet mathematician Vladimir Levenshtein in 1965. Levenshtein distance measures the distance from a string to another string. The algorithm of calculating Levenshtein distance is: <span class="math display">\[lev(a,b)=\begin{cases}
 |a|, &amp;if\ |b|=0\\
 |b|, &amp;if\ |a|=0\\
