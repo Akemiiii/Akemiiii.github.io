@@ -28,7 +28,7 @@
 <meta property="og:description" content="Introduction This project is a GSoC project. Here is the link. This project aims to help developers find useful information from error message, whose details can be found here. To achieve this goal, I">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-09-08T02:34:13.000Z">
-<meta property="article:modified_time" content="2022-09-08T14:45:12.050Z">
+<meta property="article:modified_time" content="2022-09-12T12:19:54.564Z">
 <meta property="article:author" content="Akemii">
 <meta name="twitter:card" content="summary">
 
@@ -113,7 +113,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#usage"><span class="nav-number">2.</span> <span class="nav-text">Usage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#error-message-structure"><span class="nav-number">3.</span> <span class="nav-text">Error message structure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#levenshtein-distance"><span class="nav-number">4.</span> <span class="nav-text">Levenshtein distance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#save-intermediate-results"><span class="nav-number">5.</span> <span class="nav-text">Save intermediate results</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#post-results"><span class="nav-number">6.</span> <span class="nav-text">Post results</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#draw-relation-graph"><span class="nav-number">7.</span> <span class="nav-text">Draw relation graph</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#usage"><span class="nav-number">2.</span> <span class="nav-text">Usage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#error-message-structure"><span class="nav-number">3.</span> <span class="nav-text">Error message structure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#levenshtein-distance"><span class="nav-number">4.</span> <span class="nav-text">Levenshtein distance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#save-intermediate-results"><span class="nav-number">5.</span> <span class="nav-text">Save intermediate results</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#post-results"><span class="nav-number">6.</span> <span class="nav-text">Post results</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#draw-relation-graph"><span class="nav-number">7.</span> <span class="nav-text">Draw relation graph</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#what-i-learnt"><span class="nav-number">8.</span> <span class="nav-text">What I learnt</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -194,9 +194,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-09-08 10:34:13 / Modified: 22:45:12" itemprop="dateCreated datePublished" datetime="2022-09-08T10:34:13+08:00">2022-09-08</time>
+      <time title="Created: 2022-09-08 10:34:13" itemprop="dateCreated datePublished" datetime="2022-09-08T10:34:13+08:00">2022-09-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-12 20:19:54" itemprop="dateModified" datetime="2022-09-12T20:19:54+08:00">2022-09-12</time>
     </span>
 
   
@@ -283,14 +289,21 @@ lev(tail(a),tail(b)), &amp;if\ a[0]=b[0]\\
 1+min \lbrace lev(tail(a),b),lev(a,tail(b)),lev(tail(a),tail(b))\rbrace, &amp;otherwise
 \end{cases}\]</span></p>
 <p>where $ lev(a,b) $ indicates the Levenshtein distance of string <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> ; $ tail(a) $ indicates the substring which removes the first character of <span class="math inline">\(a\)</span>.</p>
-<p>As the above formula shows, recursive implementation can be used to calculate Levenshtein distance. However, it may cost unnecessary time and space to calucate repeated substructures. Dynamic programming is a better choice. Of course, there are existing packages to use, either Perl or Python.</p>
+<p>As the above formula shows, recursive implementation can be used to calculate Levenshtein distance. However, it may cost unnecessary time and space to calculate repeated substructures. Dynamic programming is a better choice. Of course, there are existing packages to use, either Perl or Python.</p>
 <h2 id="save-intermediate-results">Save intermediate results</h2>
 <p>Though this script will not cost much time, it still needs ~2 minute for 10,000 jobs. Most time is used for scanning <code>autoinst-log.txt</code> and finding error messages. I think the time is too long if this script is frequently used. To save the time, I saved intermediate results of finding error messages. In particular, the script saves job ids and corresponding error messages into a .csv file. If new jobs are finished and the script is used, the script will firstly read the .csv file and then scan the new job files. During this period, that nothing outputs on the terminal may make the script looks like hunging. Thus, I used <a target="_blank" rel="noopener" href="https://github.com/tqdm/tqdm">tqdm</a> to present progress bars to indicate the progress.</p>
 <h2 id="post-results">Post results</h2>
 <p>After finding the similar errors, the next is presenting the results for developers. After communications with mentors, I gave up developing a new tab to show the results. Instead, I used the comment tab to post the similarity results as a comment. To achieve this, I used <a target="_blank" rel="noopener" href="https://pypi.org/project/openqa-client/">openqa-client</a> and the post method to upload the comments.</p>
 <h2 id="draw-relation-graph">Draw relation graph</h2>
 <p>During the GSoC period, my mentors mentioned whether there exists a method to show the relations of errors directly. I came up with a idea about drawing a relation chart to visualize the relations between certain errors. I chose the python version of <code>echarts</code> library - <code>pyecharts</code>. I chose it for two reasons: (1) It draws interactive charts. Users can click, drag, zoom in &amp; out the charts for more information; (2) It have detailed documents with examples, which is helpful for me.</p>
-<p>How to design the chart is a question. In my implementation, every kind of error messages is drawn as one point. The more frquent the error, the bigger its point. If the mouse hovers over the point, it will show the details. I used gravity to design the layout of points. If two error messages are similar, the attractive force between them is big, vice versa. So similar errors will get closer. For error pairs whose similarity is high, there will be a line to connect them. If the mouse hovers over the line, it will also show the details. You can use <code>--geometry</code> argument to change the resolution and the chart will be saved as a .html file.</p>
+<p>How to design the chart is a question. In my implementation, every kind of error messages is drawn as one point. The more frequent the error, the bigger its point. If the mouse hovers over the point, it will show the details. I used gravity to design the layout of points. If two error messages are similar, the attractive force between them is big, vice versa. So similar errors will get closer. For error pairs whose similarity is high, there will be a line to connect them. If the mouse hovers over the line, it will also show the details. You can use <code>--geometry</code> argument to change the resolution and the chart will be saved as a .html file.</p>
+<h2 id="what-i-learnt">What I learnt</h2>
+<ul>
+<li>Better communication ability. I used to feel nervous when communicating with others. Maybe I was afraid about doing something wrong. Now I feel much better.</li>
+<li>How to write better Perl and Python codes. When my mentors reviewing my codes, they provided many detailed and practical suggestions.</li>
+<li>Git tips and tricks. I learnt many git usages I was not familiar with in undergraduate years. There is a very helpful <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=u-x7yXonWEM&amp;t=19s">video</a> with <a target="_blank" rel="noopener" href="https://github.com/perlpunk/slides.tpcig2018/blob/master/git-tips-tricks/git-tips-tricks.md">sildes</a> from <a target="_blank" rel="noopener" href="https://github.com/perlpunk">Tina Müller</a>.</li>
+<li>Community. Becoming a contributor and communication with people on the other side of the Earth.</li>
+</ul>
 
     </div>
 
